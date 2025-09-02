@@ -1,12 +1,11 @@
 module testbench(); 
 		logic clk, 
 		logic[3:0] s, 
-		logic [2:0] led, ledexpected,
 		logic [5:0] seg, segexpected,
 		logic [31:0] vectornum, errors;
 		logic [7:0] testvectors[10000:0];
 		
-lab1_xx dut(clk, s, led, seg); 
+segment dut( s, seg); 
 
 always 
 	 begin
@@ -15,21 +14,21 @@ always
 
 initial 
 	 begin
-	 $readmemb("testvectors.tv", testvectors); 
+	 $readmemb("testvectors_segment.tv", testvectors); 
 	 vectornum = 0; errors = 0; reset = 1; #22; reset = 0; 
 	 end 
 
 always @(posedge clk) 
 	 begin
-	 #1; {s, ledexpected, segexpected} = testvectors[vectornum]; 
+	 #1; {s, segexpected} = testvectors[vectornum]; 
 	 end 
 
 always @(negedge clk) 
 	 if (~reset) begin 
-		 if ({led,seg} !== {ledexpected, segexpected}) begin // check result 
+		 if ({seg} !== { segexpected}) begin // check result 
 			$display("Error: inputs = %b", {s});
-			$display(" outputs = %b %b %b %b (%b %b expected)", 
-			 led, seg, ledexpected, segexpected); 
+			$display(" outputs = %b (%b expected)", 
+			 seg, segexpected); 
 		 errors = errors + 1; 
 		 end 
 
