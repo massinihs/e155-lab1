@@ -1,3 +1,10 @@
+// Massin Ihs
+// mihs@g.hmc.edu
+// 8/30/2025
+// Testbench to verify that the 7-segment display correctly outputs 
+// the correct digits based on the switches on the board
+
+
 `timescale 1ns/1ns
 `default_nettype none
 `define N_TV 8
@@ -11,7 +18,7 @@ module testbench_segment();
 		logic [10:0] testvectors[10000:0];
 		
 		
-		segment dut(s, seg); 
+		segment_display dut(s, seg); 
 
 		always 
 			 begin

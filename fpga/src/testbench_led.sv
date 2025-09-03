@@ -1,3 +1,10 @@
+ // Massin Ihs
+ // mihs@g.hmc.edu
+ // 8/30/2025
+ // Testbench to test the functionality of the led module. It tests whether the LEDs 
+ // are getting configured correctly based on the switches as well as the onboard osscilator
+
+
 `timescale 1ns/1ns
 `default_nettype none
 `define N_TV 8
@@ -7,11 +14,10 @@ module testbench();
 		logic clk, reset;
 		logic [3:0] s;
 		logic [1:0] led, ledexpected;
-		logic [6:0] seg;
 		logic [31:0] vectornum, errors;
 		logic [6:0] testvectors[10000:0];
 		
-lab1_mi dut(reset, s, led, seg); 
+led_display dut(reset, s, led); 
 
 always 
 	 begin

@@ -1,7 +1,8 @@
-// led display testvectors.tv
+// led display testvectors_led.tv
 // Massin Ihs
 // mihs@hmc.edu
-// 8/31/24
+// 8/31/2025
+// Test Vector for the LEDs
 
 //s _ led 
 0000_00

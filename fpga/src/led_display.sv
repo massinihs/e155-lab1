@@ -1,7 +1,12 @@
-module lab1_mi(  input logic reset, input logic [3:0] s,
-	            output logic [2:0] led, output logic [6:0] seg
-			);
-			
+// Massin Ihs
+// mihs@g.hmc.edu
+// 8/30/2025
+// Module to operate the LEDs on the board based on different switch inputs
+
+module led_display(  input logic reset, input logic [3:0] s,
+	            output logic [2:0] led
+			);	
+	
 	logic int_osc;	
 	logic [24:0] counter;
      // Internal high-speed oscillator
@@ -20,8 +25,4 @@ module lab1_mi(  input logic reset, input logic [3:0] s,
      else            counter <= counter + 1;
    end
   
-
-	segment display_segment(s,seg);
-
 endmodule
-

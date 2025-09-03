@@ -1,4 +1,11 @@
-module segment(input logic [3:0] s, output logic [6:0] seg);
+// Massin Ihs
+// mihs@g.hmc.edu
+// 8/30/2025
+// Module to operate the configuration of the segments on the 7 segment led dislay 
+// based on the inputs given by s which act as our DIP switches on the soldered board
+
+
+module segment_display(input logic [3:0] s, output logic [6:0] seg);
 	
 	
 	always_comb begin
