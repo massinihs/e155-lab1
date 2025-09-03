@@ -1,3 +1,8 @@
+`timescale 1ns/1ns
+`default_nettype none
+`define N_TV 8
+
+
 module testbench_segment(); 
 		logic clk, reset;
 		logic [3:0] s; 
@@ -5,11 +10,13 @@ module testbench_segment();
 		logic [31:0] vectornum, errors;
 		logic [10:0] testvectors[10000:0];
 		
-		segment dut( s, seg); 
+		
+		segment dut(s, seg); 
 
 		always 
 			 begin
-			 clk=1; #5; clk=0; #5; 
+			 clk=1; #5; 
+			 clk=0; #5; 
 			 end 
 
 		initial 
@@ -33,7 +40,7 @@ module testbench_segment();
 				 end 
 
 				 vectornum = vectornum + 1;
-				 if (testvectors[vectornum] === 8'bx) begin 
+				 if (testvectors[vectornum] === 11'bx) begin 
 				 $display("%d tests completed with %d errors", vectornum, errors); 
 				 $stop; 
 				 end 
