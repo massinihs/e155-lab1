@@ -1,12 +1,12 @@
 module testbench(); 
-		logic clk, 
-		logic[3:0] s, 
-		logic [2:0] led, ledexpected,
-		logic [5:0] seg, segexpected,
+		logic clk, reset;
+		logic[3:0] s;
+		logic [2:0] led, ledexpected;
+		logic [6:0] seg, segexpected;
 		logic [31:0] vectornum, errors;
-		logic [7:0] testvectors[10000:0];
+		logic [5:0] testvectors[10000:0];
 		
-lab1_xx dut(clk, s, led, seg); 
+lab1_mi dut(reset, s, led, seg); 
 
 always 
 	 begin
@@ -21,7 +21,7 @@ initial
 
 always @(posedge clk) 
 	 begin
-	 #1; {s, ledexpected, segexpected} = testvectors[vectornum]; 
+		#1; {s, ledexpected, segexpected} = testvectors[vectornum]; 
 	 end 
 
 always @(negedge clk) 

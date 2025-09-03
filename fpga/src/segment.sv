@@ -1,11 +1,7 @@
 module segment(input logic [3:0] s, output logic [6:0] seg);
 	
-		logic int_osc;	
 	
-// Internal high-speed oscillator
-	HSOSC hf_osc (.CLKHFPU(1'b1), .CLKHFEN(1'b1), .CLKHF(int_osc));
-	
-	always_comb @(posedge int_osc) begin
+	always_comb begin
 		casez(s)
 			4'b0000: seg = 7'b1111110;
 			4'b0001: seg = 7'b0110000;
