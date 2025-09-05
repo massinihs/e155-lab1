@@ -16,13 +16,18 @@ module led_display(  input logic reset, input logic [3:0] s,
 	assign led[1] = s[2] & s[3];
 	
 	// Counter
-   always_ff @(posedge int_osc) begin
-     if(reset == 0)  begin 
-		 counter <= 0;
-		 //led <= 24'b0;
-	 end 
-	 else if(counter == 24'd5000000)  led[2] <= ~led[2];
-     else            counter <= counter + 1;
-   end
+   always_ff @(posedge int_osc or negedge reset) begin
+        if (!reset) begin
+            counter <= 25'd0;
+            led[2]  <= 1'b0;
+        end else begin
+            if (counter == 25'd5000000) begin
+                led[2]  <= ~led[2];
+                counter <= 25'd0;
+            end else begin
+                counter <= counter + 1;
+            end
+        end
+    end
   
 endmodule
