@@ -4,19 +4,21 @@
 // Module to operate the LEDs on the board based on different switch inputs
 
 module led_display(  input logic reset, input logic [3:0] s,
-	            output logic [2:0] led
-			);	
-	
-	logic int_osc;	
-	logic [24:0] counter;
+           			 output logic [2:0] led
+				  );
+
+logic int_osc;
+logic [24:0] counter;
+
+
      // Internal high-speed oscillator
-	   HSOSC #(.CLKHF_DIV(2'b01)) hf_osc (.CLKHFPU(1'b1), .CLKHFEN(1'b1), .CLKHF(int_osc));
-	
-	assign led[0] = s[0] ^ s[1];
-	assign led[1] = s[2] & s[3];
-	
-	// Counter
-   always_ff @(posedge int_osc or negedge reset) begin
+  HSOSC #(.CLKHF_DIV(2'b01)) hf_osc (.CLKHFPU(1'b1), .CLKHFEN(1'b1), .CLKHF(int_osc));
+
+assign led[0] = s[0] ^ s[1];
+assign led[1] = s[2] & s[3];
+
+// Counter
+   always_ff @(posedge int_osc, negedge reset) begin
         if (!reset) begin
             counter <= 25'd0;
             led[2]  <= 1'b0;
@@ -29,5 +31,5 @@ module led_display(  input logic reset, input logic [3:0] s,
             end
         end
     end
-  
+ 
 endmodule
