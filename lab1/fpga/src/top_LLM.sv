@@ -1,3 +1,11 @@
+// Massin Ihs
+// mihs@g.hmc.edu
+// 8/30/2025
+// Module to check the functionality of an LLM at solving a hardware problem
+
+
+
+
 module led_blinker_2hz (
     output logic led
 );

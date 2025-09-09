@@ -23,8 +23,9 @@ assign led[1] = s[2] & s[3];
             counter <= 25'd0;
             led[2]  <= 1'b0;
         end else begin
+			// frequency of 2.4 Hz
             if (counter == 25'd5000000) begin
-                led[2]  <= ~led[2];
+                led[2]  <= ~led[2]; // toggle led 
                 counter <= 25'd0;
             end else begin
                 counter <= counter + 1;
