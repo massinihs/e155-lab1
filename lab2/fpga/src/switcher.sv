@@ -1,3 +1,9 @@
+// Massin Ihs
+// mihs@g.hmc.edu
+// 9/6/2025
+// Module that constantly alternates the dual displays to save resources 
+// as well as outputs the 7 segments in one of the displays
+
 module switcher(
     input  logic        reset,         // Active-low reset
     input  logic [7:0]  s,             // 8-bit input (two hex digits)
