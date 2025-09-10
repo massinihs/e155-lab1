@@ -22,9 +22,9 @@ module sum_tb;
 
         for (int i = 0; i < 256; i++) begin
             s = i;
-            //#1; 
+            #1; 
 
-            expected = s[3:0] + s[7:4];
+            expected = s[3:0] + s[7:4] +1'b1;
         end
 
         $finish;
